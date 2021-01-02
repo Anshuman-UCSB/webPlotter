@@ -4,10 +4,10 @@ import webapi
 import wrapper
 
 def startWebserver():
-	webapi.app.run() 
+	webapi.app.run(host='0.0.0.0') 
 
 def startGraph():
-	wrapper.app.run_server()
+	wrapper.app.run_server(host='0.0.0.0')
 
 x = threading.Thread(target=startWebserver)
 y = threading.Thread(target=startGraph)
