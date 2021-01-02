@@ -26,9 +26,14 @@ class dat(Resource):
 
                 
     def post(self):
-        data = request.get_json()
+        data = request.get_data().decode("utf-8").split(",")
+        map(int, data)
+        # data = raw.split(",")
+        # data[0] = int(data[0])
+        # data[1] = int(data[1])
+        print("data: ",data)
         with open('data.csv', "a") as file:
-            file.write(f"{data['x']}, {data['y']}\n")
+            file.write(f"{data[0]}, {data[1]}\n")
     
     def delete(self):
         with open("data.csv", "w") as file:
@@ -41,4 +46,4 @@ api.add_resource(dat, '/')
 
 # driver function 
 if __name__ == '__main__': 
-	app.run(debug = True) 
+	app.run(host="0.0.0.0",debug = True) 

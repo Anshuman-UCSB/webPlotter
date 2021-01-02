@@ -19,7 +19,7 @@ app.layout = html.Div(
 		dcc.Graph(id = 'live-graph', animate = False), 
 		dcc.Interval( 
 			id = 'graph-update', 
-			interval = 500, 
+			interval = 300, 
 			n_intervals = 0
 		), 
 	] 
@@ -36,8 +36,8 @@ def update_graph_scatter(n):
 	with open(filename,'rt') as f:
 		data = csv.reader(f)
 		for row in data:
-				X.append(int(row[0]))
-				Y.append(int(row[1]))
+				X.append(float(row[0]))
+				Y.append(float(row[1]))
 	data = plotly.graph_objs.Scatter( 
 			x=list(X), 
 			y=list(Y), 
